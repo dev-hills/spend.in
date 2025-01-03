@@ -17,7 +17,7 @@ const PricingCard = ({ data, enabled }: PricingCardProps) => {
         </div>
 
         {data.isPopular && (
-          <div className="bg-[#0D121F] w-[90px] h-[32px] rounded-[30px] px-[16px] py-[4px] flex items-center">
+          <div className="bg-[#0D121F] text-white w-[90px] h-[32px] rounded-[30px] px-[16px] py-[4px] flex items-center">
             Popular
           </div>
         )}
@@ -59,7 +59,7 @@ const PricingCard = ({ data, enabled }: PricingCardProps) => {
           </div>
         </div>
 
-        <button className="bg-[#7C5CFC] px-[24px] py-[13px] rounded-[30px] w-[100%] font-semibold ">
+        <button className="bg-[#7C5CFC] text-white px-[24px] py-[13px] rounded-[30px] w-[100%] font-semibold ">
           Get Started
         </button>
       </div>

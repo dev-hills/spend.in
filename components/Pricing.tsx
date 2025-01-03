@@ -60,16 +60,16 @@ const Pricing = () => {
   const [enabled, setEnabled] = useState(false);
   return (
     <div className="bg-white px-[120px] sm:px-[28px] md:px-[28px] py-[120px]">
-      <div className="flex flex-col items-center justify-center sm:items-start">
+      <div className="flex flex-col items-center justify-center sm:items-center">
         <h1 className="text-[#0D121F] font-bold text-[40px] sm:text-[30px]">
           Ready to Get Started?
         </h1>
-        <p className="text-[#596780] font-normal text-[18px] mt-[24px] text-center sm:text-left w-[40%] sm:w-[100%]">
+        <p className="text-[#596780] font-normal text-[18px] mt-[24px] text-center w-[40%] sm:w-[100%] sm:text-center">
           Choose a plan that suits your business needs
         </p>
       </div>
 
-      <div className="flex w-[100%] justify-center items-center sm:justify-start">
+      <div className="flex w-[100%] justify-center items-center sm:justify-center">
         <div className="flex flex-col items-end justify-end mt-[64px] mb-[20px]">
           <div className="flex flex-row items-center justify-center gap-[16px]">
             <span className="text-[#0D121F] font-semibold text-[20px]">

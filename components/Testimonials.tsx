@@ -1,8 +1,14 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
-import left from "../public/arrow-left.svg";
-import right from "../public/arrow-right.svg";
+import React from "react";
+
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel";
 
 interface CarouselItem {
   id: number;
@@ -125,39 +131,8 @@ const carouselData: CarouselItem[] = [
 ];
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  // Update visibleCount based on screen size
-  //   useEffect(() => {
-  //     const updateVisibleCount = () => {
-  //       if (window.innerWidth < 640) {
-  //         setVisibleCount(1); // Small screens
-  //       } else {
-  //         setVisibleCount(3); // Larger screens
-  //       }
-  //     };
-
-  //     updateVisibleCount(); // Initial check
-  //     window.addEventListener("resize", updateVisibleCount);
-
-  //     return () => {
-  //       window.removeEventListener("resize", updateVisibleCount);
-  //     };
-  //   }, []);
-
-  const handleNext = () => {
-    if (currentIndex < carouselData.length - 3) {
-      setCurrentIndex((prevIndex) => prevIndex + 1);
-    }
-  };
-
-  const handlePrev = () => {
-    if (currentIndex > 0) {
-      setCurrentIndex((prevIndex) => prevIndex - 1);
-    }
-  };
   return (
-    <div className="bg-[#0D121f] px-[120px] sm:px-[28px] md:px-[28px] py-[120px]">
+    <div className="bg-[#0D121f] px-[120px] sm:px-[20px] md:px-[28px] py-[120px]">
       <div className="flex flex-col items-center justify-center sm:items-start">
         <h3 className="text-[#7c5cfc] font-medium text-[16px]">
           WHAT THEY SAY
@@ -171,17 +146,14 @@ const Testimonials = () => {
         </p>
       </div>
 
-      <div className="relative flex flex-col">
-        <div className="flex overflow-hidden mt-[64px]">
-          <div
-            className="flex flex-row items-center justify-between gap-[60px] sm:gap-0 transition-transform duration-300"
-            style={{ transform: `translateX(-${currentIndex * 33.33}%)` }}
-          >
-            {carouselData.map((item) => (
-              <div
-                key={item.id}
-                className="bg-[#1A202C] w-[374px] p-[32px] rounded-[12px] h-[363px] flex flex-col justify-between items-center sm:p-[20px]"
-              >
+      <Carousel className="relative flex flex-col mt-[64px]">
+        <CarouselContent className="-ml-5">
+          {carouselData.map((item) => (
+            <CarouselItem
+              className="basis-1/3 md:basis-1/2 sm:basis-[100%]"
+              key={item.id}
+            >
+              <div className="bg-[#1A202C] w-[374px] p-[32px] rounded-[12px] h-[363px] flex flex-col justify-between items-center sm:p-[20px]">
                 <div>
                   <h3 className="text-[18px] font-semibold text-white">
                     {item.title}
@@ -214,28 +186,15 @@ const Testimonials = () => {
                   </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
 
         <div className="flex flex-row mx-auto mt-[64px] gap-[24px]">
-          <button
-            onClick={handlePrev}
-            disabled={currentIndex === 0}
-            className="bg-[#1A202C] w-[50px] h-[50px] p-[16px] rounded-full flex items-center justify-center"
-          >
-            <Image src={left} alt="" />
-          </button>
-
-          <button
-            onClick={handleNext}
-            disabled={currentIndex >= carouselData.length - 3}
-            className="bg-[#7C5CFC] w-[50px] h-[50px] p-[16px] rounded-full flex items-center justify-center drop-shadow-[4px_8px_24px_rgba(36,107,253,0.25)]"
-          >
-            <Image src={right} alt="" />
-          </button>
+          <CarouselPrevious />
+          <CarouselNext />
         </div>
-      </div>
+      </Carousel>
     </div>
   );
 };
